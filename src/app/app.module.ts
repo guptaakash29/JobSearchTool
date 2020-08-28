@@ -9,6 +9,9 @@ import { ApplicationDetailComponent } from './application-detail/application-det
 import { JobHistoryComponent } from './job-history/job-history.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { AppRoutingModule } from './app-routing.module';
+import { JobDetailService } from './shared/services/job-detail.service';
+import { JobHistoryService } from './shared/services/job-history.service';
+import { ApplicationService } from './shared/services/application.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,7 @@ import { AppRoutingModule } from './app-routing.module';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [JobDetailService,JobHistoryService,ApplicationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
