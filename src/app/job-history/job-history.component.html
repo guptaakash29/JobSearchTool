@@ -1,18 +1,78 @@
 <h4>ESP Job execution History</h4>
 <div class="formStyle">
-    <div class="row col-xs-2">
-        <label for="txtESPJobname" class="col-form-label">Enter ESP Reference</label>
+    <div class="col-xs-12 form-group">
+        <div class="row col-xs-2">
+            <label for="txtESPJobname" class="col-form-label">Enter ESP Reference</label>
+        </div>
+        <div class="col-xs-2">
+            <input type="text" class="form-control" id="txtESPJobName" [(ngModel)]="ESPJobName">
+        </div>
+        <div class="col-xs-2">
+            <button class="btn btn-primary">Job History Search</button>
+        </div>
+        <div class="col-xs-2">
+            <button class="btn btn-primary">Job Current Status</button>
+        </div>
+        <div class="col-xs-2">
+            <button class="btn btn-primary">Go To ESP Job</button>
+        </div>
     </div>
-    <div class="col-xs-2">
-        <input type="text" class="form-control" id="txtESPJobName">
+    <div class="col-xs-12 form-group">
+        <div class="col-xs-1 col-xs-offset-9">
+            <label for="ddlRowCount" class="col-form-label">Top: </label>
+        </div>
+        <div class="col-xs-2">
+            <select id="ddlRowCount" 
+                    class="form-control"
+                    (change)='getSelectedRowCount($event.target.value)'>
+                <option disabled>Select</option>
+                <option value="{{rowCount}}" 
+                        *ngFor="let rowCount of rowCountList">{{rowCount}}</option>
+            </select>
+        </div>
     </div>
-    <div class="col-xs-2">
-        <button class="btn btn-primary">Job History Search</button>
-    </div>
-    <div class="col-xs-2">
-        <button class="btn btn-primary">Job Current Status</button>
-    </div>
-    <div class="col-xs-2">
-        <button class="btn btn-primary">Go To ESP Job</button>
+    <div class="col-xs-12 divGrid">
+        <div class="row">
+            <div class="col-xs-2 divGrid">
+                <label>SQL Job Name</label>
+            </div>
+            <div class="col-xs-2 divGrid">
+                <label>Server Name</label>
+            </div>
+            <div class="col-xs-2 divGrid">
+                <label>Job Execution date</label>
+            </div>
+            <div class="col-xs-2 divGrid">
+                <label>Job Execution Time</label>
+            </div>
+            <div class="col-xs-2 divGrid">
+                <label>Job Status</label>
+            </div>
+            <div class="col-xs-2 divGrid">
+                <label>Duration</label>
+            </div>
+        </div>
+        <div class="row" *ngFor="let jobHistoryListItem of jobHistoryList; let i = index">
+            <div *ngIf="i < rowCount ">
+                <div class="col-xs-2 divGrid">
+                    <label>{{jobHistoryListItem.SQLJobName}}</label>
+                </div>
+                <div class="col-xs-2 divGrid">
+                    <label>{{jobHistoryListItem.serverName}}</label>
+                </div>
+                <div class="col-xs-2 divGrid">
+                    <label>{{jobHistoryListItem.jobExecutionDate}}</label>
+                </div>
+                <div class="col-xs-2 divGrid">
+                    <label>{{jobHistoryListItem.jobExecutionTime}}</label>
+                </div>
+                <div class="col-xs-2 divGrid">
+                    <label>{{jobHistoryListItem.jobStatus}}</label>
+                </div>
+                <div class="col-xs-2 divGrid">
+                    <label>{{jobHistoryListItem.Duration}}</label>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

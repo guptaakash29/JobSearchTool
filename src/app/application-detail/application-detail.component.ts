@@ -9,12 +9,10 @@ import { ApplicationService } from '../shared/services/application.service';
   styleUrls: ['./application-detail.component.css']
 })
 export class ApplicationDetailComponent implements OnInit {
-  appDetails: ApplicationModel;
+  appDetails: ApplicationModel = new ApplicationModel();
   router: Router;
   selectedApplicationId: number = 0;
   selectedJobName: string = '';
-  //selectedApplicationName: string = '';
-  //selectedApplicationName: string = '';
 
   constructor(private applicationService: ApplicationService,
               private route: ActivatedRoute) { }
