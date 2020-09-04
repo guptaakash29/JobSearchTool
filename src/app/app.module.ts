@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { JobDetailService } from './shared/services/job-detail.service';
 import { JobHistoryService } from './shared/services/job-history.service';
 import { ApplicationService } from './shared/services/application.service';
+import { AgGridModule } from 'ag-grid-angular';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ApplicationService } from './shared/services/application.service';
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AgGridModule.withComponents([])
   ],
   providers: [JobDetailService,JobHistoryService,ApplicationService],
   bootstrap: [AppComponent]

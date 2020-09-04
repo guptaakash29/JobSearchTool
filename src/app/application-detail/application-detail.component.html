@@ -1,1 +1,94 @@
-<p>application-detail works!</p>
+<h4>Application Detail Screen</h4>
+<div class="formStyle">
+<div class="row">
+    <div class="col-xs-6" style="margin-bottom: 10px; margin-right:50%;">
+        <div class="form-group">
+            <label for="ddlApplicationName" class="col-xs-4 col-form-label">Application Name :</label>
+            <div class="col-xs-4">
+                <select id="ddlApplication" class="form-control">
+                    <option disabled>Select</option>
+                    <option value="{{app.id}}" 
+                            *ngFor="let app of appDetails.ApplicationList"
+                            (change)="getSelectedApplicationId($event)">{{app.name}}</option>
+                </select>
+            </div>
+            <div class="col-xs-4">
+                <button class="btn btn-primary" (click)="searchApplicationDetail()">Search</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-6">
+        <div class="form-group" style="margin-bottom: 10px;height: 30px;">
+            <label for="txtESPJobName" class="col-xs-4 col-form-label">ESP Job Name :</label>
+            <div class="col-xs-4">
+                <select id="ddlESPJobName" class="form-control">
+                    <option disabled>Select</option>
+                    <option value="{{job.name}}" 
+                            *ngFor="let job of appDetails.ESPJobNameList"
+                            (change)="getSelectedJobName($event)"
+                            >{{job.name}}</option>
+                </select>
+            </div>
+            <div class="col-xs-4">
+                <button class="btn btn-primary" (click)="getJobDetails()">Go</button>
+            </div>
+        </div>
+        <div class="form-group" style="margin-bottom: 10px;height: 30px;">
+            <label for="txtShortDescription" class="col-xs-4 col-form-label">Short Description :</label>
+            <div class="col-xs-8">
+                <textarea rows="4" cols="50" class="form-control" id="txtShortDescription" [(ngModel)]="appDetails.shortDescription"></textarea>
+            </div>
+        </div>
+        <div class="form-group" style="margin-bottom: 10px;height: 30px;">
+            <label for="txtApplicationURL" class="col-xs-4 col-form-label">Application URL :</label>
+            <div class="col-xs-6">
+                <input type="text" class="form-control" id="txtApplicationURL" [(ngModel)]="appDetails.appURL">
+            </div>
+            <div class="col-xs-2">
+                <button class="btn btn-primary" (click)="openURL()">Go</button>
+            </div>
+        </div>
+        <div class="form-group" style="margin-bottom: 10px;height: 30px;">
+            <label for="txtWebServer" class="col-xs-4 col-form-label">Web server :</label>
+            <div class="col-xs-8">
+                <input type="text" class="form-control" id="txtWebServer" [(ngModel)]="appDetails.webServer">
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <div class="form-group" style="margin-bottom: 10px;height: 30px;">
+            <label for="txtAppServer" class="col-xs-4 col-form-label">App server :</label>
+            <div class="col-xs-8">
+                <input type="text" class="form-control" id="txtAppServer" [(ngModel)]="appDetails.appServer">
+            </div>
+        </div>
+    
+        <div class="form-group" style="margin-bottom: 10px;height: 30px;">
+            <label for="txtDatabaseServer" class="col-xs-4 col-form-label">Database Server :</label>
+            <div class="col-xs-8">
+                <input type="text" class="form-control" id="txtDatabaseServer" [(ngModel)]="appDetails.databaseServer">
+            </div>
+        </div>
+        <div class="form-group" style="margin-bottom: 10px;height: 30px;">
+            <label for="txtCriticality" class="col-xs-4 col-form-label">Criticality :</label>
+            <div class="col-xs-8">
+                <input type="text" class="form-control" id="txtCriticality" [(ngModel)]="appDetails.Criticality">
+            </div>
+        </div>
+        <div class="form-group" style="margin-bottom: 10px;height: 30px;">
+            <label for="txtAppType" class="col-xs-4 col-form-label">Application Type :</label>
+            <div class="col-xs-8">
+                <input type="text" class="form-control" id="txtAppType" [(ngModel)]="appDetails.appType">
+            </div>
+        </div>
+        <div class="form-group" style="margin-bottom: 10px;height: 30px;">
+            <label for="txtDatabaseInstance" class="col-xs-4 col-form-label">Database Instance :</label>
+            <div class="col-xs-8">
+                <input type="text" class="form-control" id="txtDatabaseInstance" [(ngModel)]="appDetails.databaseInstance">
+            </div>
+        </div>
+    </div>
+</div>
+</div>

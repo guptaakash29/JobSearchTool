@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class JobDetailComponent implements OnInit {
   
-  jobDetails: JobDetailModel;
+  jobDetails: JobDetailModel = new JobDetailModel();
   router: Router;
 
   constructor(private jobDetailService: JobDetailService,
@@ -19,7 +19,7 @@ export class JobDetailComponent implements OnInit {
   ngOnInit() {
   }
 
-  searchJobdetail(){
+  searchJobDetail(){
     this.jobDetails = this.jobDetailService.getJobDetails(this.jobDetails.ESPJobName);
   }
 
