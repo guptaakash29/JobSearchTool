@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JobDetailService } from '../shared/services/job-detail.service';
 import { JobDetailModel } from '../shared/models/jobDetail';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 
 @Component({
   selector: 'app-job-detail',
@@ -11,12 +11,19 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class JobDetailComponent implements OnInit {
   
   jobDetails: JobDetailModel = new JobDetailModel();
-  router: Router;
 
   constructor(private jobDetailService: JobDetailService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private router: Router) {}
 
   ngOnInit() {
+    this.route.queryParams.subscribe(
+      (param: Params) => {
+        this.jobDetails.ESPJobName = param["id"];
+        if(this.jobDetails.ESPJobName != undefined)
+          this.searchJobDetail();
+      }
+    );
   }
 
   searchJobDetail(){
@@ -24,7 +31,7 @@ export class JobDetailComponent implements OnInit {
   }
 
   getJobHistory(){
-    this.router.navigate(['/jobHistory'],{queryParams:{'id':this.jobDetails.ESPJobName}});
+    this.router.navigate(["/jobHistory"],{queryParams: {"id": this.jobDetails.ESPJobName}});
   }
 
   getESPDocument(){

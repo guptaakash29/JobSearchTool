@@ -5,11 +5,10 @@
         <div class="form-group">
             <label for="ddlApplicationName" class="col-xs-4 col-form-label">Application Name :</label>
             <div class="col-xs-4">
-                <select id="ddlApplication" class="form-control">
+                <select id="ddlApplication" class="form-control" (change)="getSelectedApplicationId($event)">
                     <option disabled>Select</option>
                     <option value="{{app.id}}" 
-                            *ngFor="let app of appDetails.ApplicationList"
-                            (change)="getSelectedApplicationId($event)">{{app.name}}</option>
+                            *ngFor="let app of appDetails.ApplicationList">{{app.name}}</option>
                 </select>
             </div>
             <div class="col-xs-4">
@@ -23,11 +22,10 @@
         <div class="form-group" style="margin-bottom: 10px;height: 30px;">
             <label for="txtESPJobName" class="col-xs-4 col-form-label">ESP Job Name :</label>
             <div class="col-xs-4">
-                <select id="ddlESPJobName" class="form-control">
+                <select id="ddlESPJobName" class="form-control" (change)="getSelectedJobName($event)">
                     <option disabled>Select</option>
                     <option value="{{job.name}}" 
                             *ngFor="let job of appDetails.ESPJobNameList"
-                            (change)="getSelectedJobName($event)"
                             >{{job.name}}</option>
                 </select>
             </div>

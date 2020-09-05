@@ -8,13 +8,13 @@
             <input type="text" class="form-control" id="txtESPJobName" [(ngModel)]="ESPJobName">
         </div>
         <div class="col-xs-2">
-            <button class="btn btn-primary">Job History Search</button>
+            <button class="btn btn-primary" (click)="searchJobHistory()">Job History Search</button>
         </div>
         <div class="col-xs-2">
-            <button class="btn btn-primary">Job Current Status</button>
+            <button class="btn btn-primary" (click)="getJobCurrentStatus()">Job Current Status</button>
         </div>
         <div class="col-xs-2">
-            <button class="btn btn-primary">Go To ESP Job</button>
+            <button class="btn btn-primary" (click)="showJobDetail()">Go To ESP Job</button>
         </div>
     </div>
     <div class="col-xs-12 form-group">
@@ -31,46 +31,46 @@
             </select>
         </div>
     </div>
-    <div class="col-xs-12 divGrid">
-        <div class="row">
-            <div class="col-xs-2 divGrid">
+    <div class="col-xs-12" *ngIf="jobHistoryList.length > 0">
+        <div class="row divGridHeader">
+            <div class="col-xs-2 divGridHeader">
                 <label>SQL Job Name</label>
             </div>
-            <div class="col-xs-2 divGrid">
+            <div class="col-xs-2 divGridHeader">
                 <label>Server Name</label>
             </div>
-            <div class="col-xs-2 divGrid">
+            <div class="col-xs-2 divGridHeader">
                 <label>Job Execution date</label>
             </div>
-            <div class="col-xs-2 divGrid">
+            <div class="col-xs-2 divGridHeader">
                 <label>Job Execution Time</label>
             </div>
-            <div class="col-xs-2 divGrid">
+            <div class="col-xs-2 divGridHeader">
                 <label>Job Status</label>
             </div>
-            <div class="col-xs-2 divGrid">
+            <div class="col-xs-2 divGridHeader">
                 <label>Duration</label>
             </div>
         </div>
         <div class="row" *ngFor="let jobHistoryListItem of jobHistoryList; let i = index">
             <div *ngIf="i < rowCount ">
-                <div class="col-xs-2 divGrid">
-                    <label>{{jobHistoryListItem.SQLJobName}}</label>
+                <div class="col-xs-2 divGridCell">
+                    {{jobHistoryListItem.SQLJobName}}
                 </div>
-                <div class="col-xs-2 divGrid">
-                    <label>{{jobHistoryListItem.serverName}}</label>
+                <div class="col-xs-2 divGridCell">
+                    {{jobHistoryListItem.serverName}}
                 </div>
-                <div class="col-xs-2 divGrid">
-                    <label>{{jobHistoryListItem.jobExecutionDate}}</label>
+                <div class="col-xs-2 divGridCell">
+                    {{jobHistoryListItem.jobExecutionDate}}
                 </div>
-                <div class="col-xs-2 divGrid">
-                    <label>{{jobHistoryListItem.jobExecutionTime}}</label>
+                <div class="col-xs-2 divGridCell">
+                    {{jobHistoryListItem.jobExecutionTime}}
                 </div>
-                <div class="col-xs-2 divGrid">
-                    <label>{{jobHistoryListItem.jobStatus}}</label>
+                <div class="col-xs-2 divGridCell">
+                    {{jobHistoryListItem.jobStatus}}
                 </div>
-                <div class="col-xs-2 divGrid">
-                    <label>{{jobHistoryListItem.Duration}}</label>
+                <div class="col-xs-2 divGridCell">
+                    {{jobHistoryListItem.Duration}}
                 </div>
             </div>
         </div>

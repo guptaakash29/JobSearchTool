@@ -1,4 +1,8 @@
-.divGrid {
+.divGridCell {
     border: solid 1px black;
-
+    background-color: honeydew;
     }
+.divGridHeader{
+    border: solid 1px black;
+    background-color: powderblue;
+}

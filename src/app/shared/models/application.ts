@@ -1,6 +1,6 @@
 export class ApplicationModel{
-    ApplicationList: {id: string, name:string}[] = [];
-    ESPJobNameList: string[] = [];
+    ApplicationList: {id: number, name:string}[] = [];
+    ESPJobNameList: {id: number, appId: number, name:string}[] = [];
     shortDescription: string = '';
     appURL: string = '';
     webServer: string = '';

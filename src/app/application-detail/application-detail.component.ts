@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ApplicationModel } from '../shared/models/application';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApplicationService } from '../shared/services/application.service';
+import { JobDetailService } from '../shared/services/job-detail.service';
+import { JobModel } from '../shared/models/jobModel';
 
 @Component({
   selector: 'app-application-detail',
@@ -10,22 +12,31 @@ import { ApplicationService } from '../shared/services/application.service';
 })
 export class ApplicationDetailComponent implements OnInit {
   appDetails: ApplicationModel = new ApplicationModel();
-  router: Router;
   selectedApplicationId: number = 0;
   selectedJobName: string = '';
+  jobList: JobModel[] = [];
 
   constructor(private applicationService: ApplicationService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private jobDetailService: JobDetailService,
+              private router: Router) { }
 
   ngOnInit() {
+    this.appDetails.ApplicationList = this.applicationService.getAppList();
   }
 
   getSelectedApplicationId (event: any) {
     this.selectedApplicationId = +event.target.value;
+    this.getJobListByAppId(this.selectedApplicationId);
+  }
+
+  getJobListByAppId(selectedAppId: number){
+    this.appDetails.ESPJobNameList = this.jobDetailService.getJobListByAppId(selectedAppId);
   }
 
   getSelectedJobName (event: any) {
     this.selectedJobName = event.target.value;
+    console.log(this.selectedJobName);
   }
 
   searchApplicationDetail(){
@@ -33,7 +44,7 @@ export class ApplicationDetailComponent implements OnInit {
   }
 
   getJobDetails(){
-    this.router.navigate(['/jobDetail'],{queryParams:{'name':this.selectedJobName}});
+    this.router.navigate(['/jobDetail'],{queryParams:{'id':this.selectedJobName}});
   }
 
   getESPDocument(){
