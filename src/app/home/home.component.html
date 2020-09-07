@@ -1,1 +1,21 @@
-<p>home works!</p>
+<div class="row loginForm">
+    <div class="form-group loginFormRows">
+        <div class="col-xs-4">
+            <label for="txtUsername">Username</label>
+        </div>
+        <div class="col-xs-8 form-group">
+            <input type="text" id="txtUsername" class="form-control" [(ngModel)]='username'>
+        </div>
+    </div>
+    <div class="form-group loginFormRows">
+        <div class="col-xs-4">
+            <label for="txtPassword">Password</label>
+        </div>
+        <div class="col-xs-8 form-group">
+            <input type="text" id="txtPassword" class="form-control" [(ngModel)]='password'>
+        </div>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary button" id="btnLogin" (click)="login()">Login</button>
+    </div>
+</div>

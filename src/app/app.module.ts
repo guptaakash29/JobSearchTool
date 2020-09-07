@@ -12,6 +12,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { JobDetailService } from './shared/services/job-detail.service';
 import { JobHistoryService } from './shared/services/job-history.service';
 import { ApplicationService } from './shared/services/application.service';
+import { AuthGuard } from './auth-guard.service';
+import { AuthService } from './auth.service';
+import { AppDetailResolver } from './application-detail/app-detail-resolver.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,7 @@ import { ApplicationService } from './shared/services/application.service';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [JobDetailService,JobHistoryService,ApplicationService],
+  providers: [JobDetailService,JobHistoryService,ApplicationService, AuthGuard, AuthService, AppDetailResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
